@@ -1,42 +1,40 @@
-# AIP304 CW2 — Option 2, Day 1
+# AIP304 Coursework 2 · Option 2
 
-主 Notebook 为 `CW2.ipynb`。本阶段只完成数据准备，不训练模型或计算测试性能。
+Does binary lesion-mask supervision improve rejection of unseen diseases on familiar plant hosts while maintaining known-class macro-F1?
 
-## 运行
+## Run the notebook
 
-1. 在此目录启动 Jupyter，使用 Python 3.10+：`python -m pip install -r requirements.txt`。
-2. 从上到下运行 `CW2.ipynb`。首次会下载约 1.1 GB 的 PlantSeg v7；CPU 足够。
-3. 也可从 https://zenodo.org/records/17719108 下载 `plantseg.zip` 放到 `data/raw/`。官方 MD5：`9358a66dff88cdd15c4fe009763c40a3`。
-4. Colab/Kaggle 可用环境变量 `CW2_PROJECT_ROOT` 指向可写输出目录，`PLANTSEG_DATA_ROOT` 指向含 Metadata.csv/images/annotations 的数据目录。保留压缩包可核验手动目录；未核验来源的数据不能冻结。
-5. 可将 `DOWNLOAD=False` 用于离线运行。已校验压缩包会复用，原始文件不改写。
+Use `CW2.ipynb` for the coursework. Install dependencies with `python -m pip install -r requirements.txt`, then run the notebook from the repository root. It downloads [PlantSeg v7](https://zenodo.org/records/17719108), or you can place the release archive at `data/raw/plantseg.zip`. Set `DOWNLOAD=False` to use existing data and cached metadata offline.
 
-Notebook 所有处理函数都在单一文件内，无本地私有绝对路径。安装依赖与数据代码分开；实际运行版本记录于 `artifacts/metadata/environment.json`。
+The current notebook verifies the dataset, audits the nine-host subset (4,349 images, 43 classes), and generates draft A/B manifests. See [audit results](artifacts/audit/) and [split protocol](artifacts/splits/split_protocol.json). The next milestone is to resolve cross-partition duplicates, review training-mask exclusions, and freeze both manifests before training.
 
-## 产物
+## Data and split rules
 
-- `artifacts/metadata/`：版本/API记录、环境、九宿主索引、原始到规范化标签映射、执行总结。
-- `artifacts/audit/`：每宿主/类别原始分区计数、文件/mask异常、字节/像素重复及跨分区重复、排除作用范围。
-- `artifacts/splits/`：A/B类别角色、独立known ID、每图manifest、各组支持数、协议及内容哈希。
-- `artifacts/figures/`：尺寸统计、A/B共同known-training展示、同步resize演示。
+Use PlantSeg v7 and keep its original partitions. The nine hosts are apple, banana, citrus, corn, potato, soybean, tomato, wheat, and zucchini. Each host–disease pair is one class.
 
-## 使用边界
+| Class role | Original training images | Original validation images | Original test images |
+| --- | --- | --- | --- |
+| Known | Used for training | Used for validation | Used for testing |
+| Development unknown | Unused | Used for validation | Unused |
+| Test unknown | Unused | Unused | Used for testing |
 
-以 `split_protocol.json` 和 `execution_summary.json` 为真实运行状态依据。默认 draft；未解决跨分区重复、异常、空组和团队复核会阻止冻结。近重复未检查，不声称完全无泄漏。读取实验样本必须同时筛选 `included=True` 和对应 `experimental_split`。mask仅允许included known training使用；出现训练mask异常时两种比较方法使用相同排除清单。
+- **Both assignments** use citrus as development unknown and potato as test unknown. For each remaining host, sort disease labels alphabetically. **A** holds out the first label for development and the second for testing. **B** holds out the second for development and the third for testing. All remaining labels are known.
+- Record image IDs, labels, class roles, and exclusions. Keep exact duplicates within one original partition. Document any unresolved near-duplicate risk. Use the same eligible samples for both methods within each assignment.
+- Use binary masks only for supervision on known training images. Validation and test inference use RGB only. Fit data-dependent preprocessing on training images. Use deterministic evaluation transforms and record software, hardware, seeds, initial weights, and runtime.
 
-保留原始约70/10/20分区，不重分或跨区移动图片。验证/测试预测只用RGB；不得输入真实mask、host元数据或含类别信息的文件名。原始数据和模型权重不入Git。数据集记录许可CC BY-NC 4.0，图片来源与许可保存在索引；对外发布示例前核对相关条款。
+## Option 2 requirements
 
-## 下一步
+- **Research design.** Review at least three closely related methods. Before training, state a falsifiable hypothesis and justify the allowable drop in known-class macro-F1.
+- **Models and runs.** Compare one focused lesion-supervised method with a matched classifier. Match backbone, initialisation source, preprocessing, augmentation, and training and search budgets. Compare maximum softmax, maximum logit, and energy scores. Run the required ablations and use three seeds per assignment for the main comparison. Train each assignment independently.
+- **Validation.** Select checkpoints by known validation macro-F1. Select configurations by familiar-host validation AUOSCR within the predefined macro-F1 tolerance. Choose the primary score on baseline validation data and apply the same rule to both models. Set the operating threshold to accept about 95% of known validation images. Freeze all choices for both assignments before inspecting either test result.
+- **Test reporting.** Report known macro-F1 and accuracy before rejection, unknown AUROC, AUOSCR, and the three fixed-threshold rates (known acceptance, correct-and-accepted known rate, and unknown false-acceptance rate). Use familiar-host AUOSCR as the primary outcome. Report the unfamiliar-host control separately with the same known images. Break down shared versus unseen disease labels where sample sizes permit. Report sample sizes, seed means, standard deviations, paired differences, and representative failures.
 
-复核draft问题并冻结两套协议；填写成员信息；确定假设及容忍度、方法与匹配baseline、最终transforms和训练种子。尚未训练、调参或计算测试指标，也未上传GitHub。
+## Submission
 
-## 来源与AI协助
+Due **13 December at 23:59** (Week 13). Submit one package per team of 1–3 students.
 
-课程任务书：`AIP304 CW2 Task Sheet.pdf`，页2、4–8。
-数据：https://zenodo.org/records/17719108 （v7，2025-11-25）。
-数据说明：https://doi.org/10.1038/s41597-025-06513-4 。
-Mask编码参考：https://github.com/tqwei05/PlantSeg/blob/main/mmseg/datasets/plantseg115.py 。
-Codex协助检查来源、编写数据准备代码及运行校验；具体结果见Notebook输出与执行总结。成员应复核并理解实现；不编造工具版本、成员贡献或未运行实验。
+- **Notebook.** One reproducible `.ipynb` that runs in a fresh Colab or Kaggle environment, includes full training code, and regenerates the report figures and tables.
+- **Report.** One PDF of at most five pages, including references, AI-use disclosure, and team contributions where applicable. State the chosen option and list names and student IDs.
+- **Video.** At most three minutes. Show working inference, one result, and one limitation. Show the presenter’s face during narration and include every team member.
 
-## 本次实际验证（2026-11-11）
-
-已完成两次干净 kernel 顺序运行；九宿主索引和全部 A/B CSV 在两次运行中 SHA-256 一致。官方 MD5 核验通过。九宿主共 4,349 张图片、43 类，0 张不可读图片，10 条 mask/EXIF 异常，跨分区精确重复涉及 151 张图片。两套 manifest 均为 draft；下一步需复核重复与 mask 异常，再冻结协议。代码层面额外检查了 A/B 全部角色/分区组合、训练 mask 排除范围、安全解压、原始文件不覆盖及跨分区重复检测。
+Full requirements and grading rubric are in the [coursework task sheet](AIP304%20CW2%20Task%20Sheet.pdf), especially Sections 2 and 4–7.
