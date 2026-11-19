@@ -1,26 +1,26 @@
-known_class_id,host,disease
-0,apple,black rot
-1,apple,scab
-2,banana,anthracnose
-3,banana,cigar end rot
-4,banana,cordana leaf spot
-5,banana,panama disease
-6,corn,gray leaf spot
-7,corn,smut
-8,soybean,bacterial blight
-9,soybean,frog eye leaf spot
-10,soybean,mosaic
-11,soybean,rust
-12,tomato,bacterial leaf spot
-13,tomato,leaf mold
-14,tomato,mosaic virus
-15,tomato,septoria leaf spot
-16,tomato,yellow leaf curl virus
-17,wheat,bacterial leaf streak (black chaff)
-18,wheat,loose smut
-19,wheat,powdery mildew
-20,wheat,septoria blotch
-21,wheat,stem rust
-22,wheat,stripe rust
-23,zucchini,bacterial wilt
-24,zucchini,yellow mosaic virus
+host,disease,known_class_id
+apple,black rot,0
+apple,scab,1
+banana,anthracnose,2
+banana,cigar end rot,3
+banana,cordana leaf spot,4
+banana,panama disease,5
+corn,gray leaf spot,6
+corn,smut,7
+soybean,bacterial blight,8
+soybean,frog eye leaf spot,9
+soybean,mosaic,10
+soybean,rust,11
+tomato,bacterial leaf spot,12
+tomato,leaf mold,13
+tomato,mosaic virus,14
+tomato,septoria leaf spot,15
+tomato,yellow leaf curl virus,16
+wheat,bacterial leaf streak (black chaff),17
+wheat,loose smut,18
+wheat,powdery mildew,19
+wheat,septoria blotch,20
+wheat,stem rust,21
+wheat,stripe rust,22
+zucchini,bacterial wilt,23
+zucchini,yellow mosaic virus,24

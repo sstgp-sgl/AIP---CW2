@@ -1,4 +1,4 @@
-host,training,validation,test
+host,Training,Validation,Test
 apple,274,46,82
 banana,244,36,74
 citrus,291,42,83

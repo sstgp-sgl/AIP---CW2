@@ -1,26 +1,26 @@
-known_class_id,host,disease
-0,apple,rust
-1,apple,scab
-2,banana,bunchy top
-3,banana,cigar end rot
-4,banana,cordana leaf spot
-5,banana,panama disease
-6,corn,rust
-7,corn,smut
-8,soybean,downy mildew
-9,soybean,frog eye leaf spot
-10,soybean,mosaic
-11,soybean,rust
-12,tomato,late blight
-13,tomato,leaf mold
-14,tomato,mosaic virus
-15,tomato,septoria leaf spot
-16,tomato,yellow leaf curl virus
-17,wheat,leaf rust
-18,wheat,loose smut
-19,wheat,powdery mildew
-20,wheat,septoria blotch
-21,wheat,stem rust
-22,wheat,stripe rust
-23,zucchini,powdery mildew
-24,zucchini,yellow mosaic virus
+host,disease,known_class_id
+apple,rust,0
+apple,scab,1
+banana,bunchy top,2
+banana,cigar end rot,3
+banana,cordana leaf spot,4
+banana,panama disease,5
+corn,rust,6
+corn,smut,7
+soybean,downy mildew,8
+soybean,frog eye leaf spot,9
+soybean,mosaic,10
+soybean,rust,11
+tomato,late blight,12
+tomato,leaf mold,13
+tomato,mosaic virus,14
+tomato,septoria leaf spot,15
+tomato,yellow leaf curl virus,16
+wheat,leaf rust,17
+wheat,loose smut,18
+wheat,powdery mildew,19
+wheat,septoria blotch,20
+wheat,stem rust,21
+wheat,stripe rust,22
+zucchini,powdery mildew,23
+zucchini,yellow mosaic virus,24

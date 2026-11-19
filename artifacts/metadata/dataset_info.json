@@ -4,15 +4,13 @@
   "source_url": "https://zenodo.org/records/17719108",
   "publication_date": "2025-11-25",
   "file_name": "plantseg.zip",
-  "checked_at": "2026-11-11T22:37:49.184325+08:00",
-  "checksum_status": "verified",
+  "checked_at": "2026-11-19T12:04:20.271701+08:00",
   "source_checksum": "md5:9358a66dff88cdd15c4fe009763c40a3",
-  "source_expected_bytes": 1057281724,
-  "downloaded_at": "2026-11-11T22:34:53.156157+08:00",
-  "local_sha256": "cbdfb273eb26fea93fda52bbfe4766cc31881feb3a1202b13e4d85e8a4c0bcfa",
-  "download_url": "https://zenodo.org/api/records/17719108/files/plantseg.zip/content",
-  "metadata_origin": "cached official API response",
+  "checksum_status": "verified",
+  "downloaded_at": null,
+  "download_date_note": "Existing archive reused; acquisition time not inferred from filesystem timestamps.",
   "file_size_bytes": 1057281724,
   "local_md5": "9358a66dff88cdd15c4fe009763c40a3",
-  "extracted_files_status": "verified against archive"
+  "local_sha256": "cbdfb273eb26fea93fda52bbfe4766cc31881feb3a1202b13e4d85e8a4c0bcfa",
+  "selected_extracted_files": "Existing selected files match archive size/CRC; missing files are reported by the audit."
 }

@@ -1,17 +1,22 @@
 {
-  "synthetic_protocol_checks": [
-    "A: full role/split truth table and mask exclusion scope passed",
-    "B: full role/split truth table and mask exclusion scope passed",
-    "ZIP path traversal rejected before extraction",
-    "Repeated extraction verified; modified raw file rejected and preserved",
-    "Exact file/pixel duplicates across original partitions flagged"
+  "notebook": "data_preprocess.ipynb",
+  "checked_at": "2026-11-19T12:04:20.271701+08:00",
+  "final_notebook_clean_kernel_runs": 1,
+  "executed_code_cells": 15,
+  "checks": [
+    "Notebook schema and all Python cells parse",
+    "Every code cell has a preceding English task-sheet explanation",
+    "Official v7 MD5 and extracted selected-file size/CRC checks",
+    "Final A/B role and original-partition assertions",
+    "All included RGB files readable; known training masks valid",
+    "No cross-original-partition exact file or pixel duplicates among included samples",
+    "Every known class has training support and every required evaluation group is nonempty",
+    "CSV round-trip and exported protocol content hashes",
+    "All previous exclusions retained; newly excluded old-included rows are exact-duplicate exclusions"
   ],
-  "note": "Synthetic checks validate implementation only; dataset findings are in audit_summary.json.",
-  "fresh_kernel_complete_runs": 2,
-  "executed_code_cells": 11,
-  "repeated_run_identical_files": 13,
-  "raw_data_preservation": "Existing extracted files verified by ZIP size/CRC; no raw overwrites",
-  "figures_reviewed": [
-    "known_training_examples.png"
-  ]
+  "figures_visually_reviewed": [
+    "known_training_examples.png",
+    "paired_resize_demo.png"
+  ],
+  "scope": "Data preparation only; no training or test-performance evaluation; near-duplicates not checked"
 }

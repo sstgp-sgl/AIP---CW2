@@ -1,6 +1,6 @@
 {
-  "run_at": "2026-11-11T22:37:49.184325+08:00",
-  "elapsed_seconds": 56.19,
+  "run_at": "2026-11-19T12:04:20.271701+08:00",
+  "elapsed_seconds": 48.08,
   "dataset_version": "v7",
   "checksum_status": "verified",
   "subset": {
@@ -18,13 +18,25 @@
     "pixel_duplicate_groups": 162,
     "cross_partition_duplicate_images": 151,
     "near_duplicate_check": "not performed; unresolved near-duplicate leakage is a limitation",
-    "pixel_hash_policy": "EXIF transpose, RGB, original oriented dimensions plus raw pixel bytes; no resizing"
+    "pixel_hash_policy": "EXIF transpose; original oriented dimensions + RGB pixels; no resizing"
   },
   "manifest_status": "draft",
+  "duplicate_exclusion_rows": 130,
+  "included_counts": {
+    "A": {
+      "test": 673,
+      "train": 1704,
+      "validation": 376
+    },
+    "B": {
+      "test": 623,
+      "train": 1547,
+      "validation": 370
+    }
+  },
   "blockers": [
-    "Cross-partition exact duplicate groups unresolved",
-    "Team review and explicit protocol freeze pending",
-    "Training-mask exclusions/alignment require review"
+    "Team review of deterministic duplicate and mask exclusions pending",
+    "Full experiment and evaluation protocol must be agreed before training"
   ],
   "outputs": [
     "artifacts/metadata",
@@ -33,19 +45,19 @@
     "artifacts/figures"
   ],
   "not_done": [
-    "near-duplicate audit",
+    "near-duplicate detection",
     "team protocol freeze",
     "model training",
-    "hyperparameter search",
-    "test performance"
+    "test-performance evaluation"
   ],
   "ai_assistance": {
     "tool": "Codex",
     "model_version": "not recorded",
     "tasks": [
-      "task-sheet and source inspection",
-      "Day 1 notebook implementation",
-      "data integrity and protocol checks"
+      "interactive code tutoring",
+      "notebook completion and English explanations",
+      "task-sheet section matching",
+      "execution and protocol checks"
     ]
   }
 }

@@ -1,5 +1,15 @@
 # AIP304 Coursework 2 · Option 2
 
+
+## Current data-preparation entry point
+
+Run `data_preprocess.ipynb` from top to bottom to regenerate the current audited A/B manifests. Each code cell is preceded by a short English explanation linked to the task-sheet sections. The notebook verifies the existing v7 archive, recomputes file/mask audits, applies the documented duplicate exclusions, adds unknown subgroups, and exports current CSV/JSON files under `artifacts/`.
+
+The current duplicate rule retains exact copies in the highest original partition (`test > validation > training`) and excludes all members with conflicting class labels. No image is moved. Mask-related exclusions affect known training equally for both compared methods. Use `included == True` together with `experimental_split` when loading samples.
+
+The protocol stays `draft` pending team review and agreement on the full experiment. `CW2.ipynb` still contains the earlier Day 1 preparation; running that older preparation overwrites these updated exports. Integrate the current preparation into the final single coursework notebook before training/submission. The actual counts and environment are in `artifacts/metadata/execution_summary.json`.
+
+
 Does binary lesion-mask supervision improve rejection of unseen diseases on familiar plant hosts while maintaining known-class macro-F1?
 
 ## Run the notebook

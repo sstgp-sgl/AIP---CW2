@@ -1,8 +1,8 @@
 experimental_split,unknown_group,images
-train,known,1762
-validation,known,286
-validation,familiar_host,57
+train,known,1704
+validation,known,280
+validation,familiar_host,54
 validation,unfamiliar_host,42
-test,known,508
-test,familiar_host,149
+test,known,499
+test,familiar_host,147
 test,unfamiliar_host,27
